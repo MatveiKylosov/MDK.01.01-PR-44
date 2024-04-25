@@ -6,7 +6,11 @@ namespace TaskManager_Kylosov.Context
 {
     public class TasksContext : DbContext
     {
-        public DbSet<Tasks> Tasks { get; set; }
+        public DbSet<Tasks> Tasks 
+        { 
+            get; 
+            set; 
+        }
         public TasksContext()
         {
             Database.EnsureCreated();

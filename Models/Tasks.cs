@@ -3,8 +3,6 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using Schema = System.ComponentModel.DataAnnotations.Schema;
-using System.Configuration;
-using System.Windows.Media.Animation;
 
 
 namespace TaskManager_Kylosov.Models
@@ -13,8 +11,10 @@ namespace TaskManager_Kylosov.Models
     {
         public int Id { get; set; }
         private string name;
-        public string Name {  get { return name; } 
-            set 
+        public string Name
+        {
+            get { return name; }
+            set
             {
                 Match match = Regex.Match(value, "^.{1, 50}$");
                 if (!match.Success)
@@ -25,11 +25,11 @@ namespace TaskManager_Kylosov.Models
                     name = value;
                     OnPropertyChanged("Name");
                 }
-            } 
+            }
         }
 
         private string priority;
-        public string Priority 
+        public string Priority
         {
             get { return priority; }
             set
@@ -46,7 +46,9 @@ namespace TaskManager_Kylosov.Models
             }
         }
 
-        public DateTime DateExecute { get { return DateExecute; }
+        public DateTime DateExecute
+        {
+            get { return DateExecute; }
             set
             {
                 if (value.Date < DateTime.Now.Date)
@@ -61,7 +63,7 @@ namespace TaskManager_Kylosov.Models
         }
 
         private string comment;
-        public string Comment 
+        public string Comment
         {
             get { return comment; }
             set
@@ -108,7 +110,7 @@ namespace TaskManager_Kylosov.Models
         }
 
         [Schema.NotMapped]
-        public string IsEnableText 
+        public string IsEnableText
         {
             get
             {
@@ -128,8 +130,9 @@ namespace TaskManager_Kylosov.Models
         }
 
         [Schema.NotMapped]
-        public RelayCommand OnEdit { 
-            get 
+        public RelayCommand OnEdit
+        {
+            get
             {
                 return new RelayCommand(obj =>
                     {
@@ -138,9 +141,9 @@ namespace TaskManager_Kylosov.Models
                         if (!isEnable)
                             (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.SaveChanges();
                     }
-                ); 
-                    
-            } 
+                );
+
+            }
         }
 
         [Schema.NotMapped]
@@ -150,7 +153,7 @@ namespace TaskManager_Kylosov.Models
             {
                 return new RelayCommand(obj =>
                 {
-                    if(MessageBox.Show("Вы уверены что хотите удалить задачу?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    if (MessageBox.Show("Вы уверены что хотите удалить задачу?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.Tasks.Remove(this);
                         (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.Remove(this);
