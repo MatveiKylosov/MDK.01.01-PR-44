@@ -16,9 +16,9 @@ namespace TaskManager_Kylosov.Models
             get { return name; }
             set
             {
-                Match match = Regex.Match(value, "^.{1, 50}$");
+                Match match = Regex.Match(value, "^.{1,50}$");
                 if (!match.Success)
-                    MessageBox.Show("Наименование не должно быть пустым, и не более 50 символов.", "Не корретный ввод значениея.");
+                    MessageBox.Show($"Наименование не должно быть пустым, и не более 50 символов. ${value}$", "Не корретный ввод значениея.");
 
                 else
                 {
@@ -34,7 +34,7 @@ namespace TaskManager_Kylosov.Models
             get { return priority; }
             set
             {
-                Match match = Regex.Match(value, "^.{1, 50}$");
+                Match match = Regex.Match(value, "^.{1,50}$");
                 if (!match.Success)
                     MessageBox.Show("Приоритет не должно быть пустым, и не более 50 символов.", "Не корретный ввод значениея.");
 
@@ -46,9 +46,12 @@ namespace TaskManager_Kylosov.Models
             }
         }
 
+
+        private DateTime dateExecute;
+
         public DateTime DateExecute
         {
-            get { return DateExecute; }
+            get { return dateExecute; }
             set
             {
                 if (value.Date < DateTime.Now.Date)
@@ -56,7 +59,7 @@ namespace TaskManager_Kylosov.Models
 
                 else
                 {
-                    DateExecute = value;
+                    dateExecute = value;
                     OnPropertyChanged("DateExecute ");
                 }
             }
@@ -70,7 +73,7 @@ namespace TaskManager_Kylosov.Models
             {
                 Match match = Regex.Match(value, "^.{1,1000}$");
                 if (!match.Success)
-                    MessageBox.Show("Комментарий не должен быть пустым, и не более 1000 символов.", "Не корректный воод значнения.");
+                    MessageBox.Show($"Комментарий не должен быть пустым, и не более 1000 символов.", "Не корректный воод значнения.");
 
                 else
                 {
@@ -136,9 +139,9 @@ namespace TaskManager_Kylosov.Models
             {
                 return new RelayCommand(obj =>
                     {
-                        isEnable = !isEnable;
+                        IsEnable = !IsEnable;
 
-                        if (!isEnable)
+                        if (!IsEnable)
                             (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.SaveChanges();
                     }
                 );
