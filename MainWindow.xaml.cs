@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace TaskManager_Kylosov
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xamlПроработанная структура и реализованное главное окно
     /// </summary>
     public partial class MainWindow : Window
     {
