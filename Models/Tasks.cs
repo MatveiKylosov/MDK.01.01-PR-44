@@ -152,7 +152,7 @@ namespace TaskManager_Kylosov.Models
                 {
                     if(MessageBox.Show("Вы уверены что хотите удалить задачу?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vms_tasks.Tasks.Remove(this);
+                        (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.Tasks.Remove(this);
                         (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.Remove(this);
                         (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.SaveChanges();
                     }
@@ -163,7 +163,7 @@ namespace TaskManager_Kylosov.Models
         }
 
         [Schema.NotMapped]
-        public RelayCommand OnDelete
+        public RelayCommand OnDone
         {
             get
             {
