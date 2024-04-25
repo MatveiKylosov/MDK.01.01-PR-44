@@ -1,9 +1,8 @@
-﻿using TaskManager.Classes;
+﻿using TaskManager_Kylosov.Classes;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using Schema = System.ComponentModel.DataAnnotations.Schema;
-using TaskManager_Kylosov.Classes;
 using System.Configuration;
 using System.Windows.Media.Animation;
 
