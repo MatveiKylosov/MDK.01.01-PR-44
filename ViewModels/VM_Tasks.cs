@@ -39,7 +39,7 @@ namespace TaskManager_Kylosov.ViewModels
         public string FindName
         {
             get
-            {
+            {   
                 return findName;
             }
             set
