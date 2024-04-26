@@ -1,4 +1,5 @@
-﻿using TaskManager_Kylosov.Classes;
+﻿using System.Windows;
+using TaskManager_Kylosov.Classes;
 
 namespace TaskManager_Kylosov.ViewModels
 {
@@ -15,6 +16,14 @@ namespace TaskManager_Kylosov.ViewModels
             get
             {
                 return new RelayCommand(obj => { MainWindow.Instance.Close(); });
+            }
+        }
+
+        public string FindName
+        {
+            set
+            {
+                MessageBox.Show("xui");
             }
         }
     }

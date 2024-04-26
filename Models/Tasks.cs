@@ -60,7 +60,7 @@ namespace TaskManager_Kylosov.Models
                 else
                 {
                     dateExecute = value;
-                    OnPropertyChanged("DateExecute ");
+                    OnPropertyChanged("DateExecute");
                 }
             }
         }
@@ -158,7 +158,7 @@ namespace TaskManager_Kylosov.Models
                 {
                     if (MessageBox.Show("Вы уверены что хотите удалить задачу?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.Tasks.Remove(this);
+                        (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.Tasks.Remove(this); // del in form
                         (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.Remove(this);
                         (MainWindow.Instance.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.SaveChanges();
                     }
