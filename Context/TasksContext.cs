@@ -14,7 +14,7 @@ namespace TaskManager_Kylosov.Context
         public TasksContext()
         {
             Database.EnsureCreated();
-            //Tasks.Load();
+            Tasks.Load();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -9,7 +9,10 @@ namespace TaskManager_Kylosov.ViewModels
         public VM_Priority vm_priority = new VM_Priority();
         public VM_Pages()
         {
-            MainWindow.Instance.Frame.Navigate(new View.PriorityFolder.Main(vm_priority));
+            if(true)
+                MainWindow.Instance.Frame.Navigate(new View.Main(vm_tasks));
+            else
+                MainWindow.Instance.Frame.Navigate(new View.PriorityFolder.Main(vm_priority));
         }
 
         public RelayCommand OnClose

@@ -3,6 +3,8 @@ using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using Schema = System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.ObjectModel;
+using TaskManager_Kylosov.Context;
 
 
 namespace TaskManager_Kylosov.Models
@@ -28,21 +30,17 @@ namespace TaskManager_Kylosov.Models
             }
         }
 
-        private string priority;
-        public string Priority
+        private int? priorityId;
+        public int? PriorityId
         {
-            get { return priority; }
+            get 
+            {
+                return priorityId; 
+            }
             set
             {
-                Match match = Regex.Match(value, "^.{1,50}$");
-                if (!match.Success)
-                    MessageBox.Show("Приоритет не должно быть пустым, и не более 50 символов.", "Не корретный ввод значениея.");
-
-                else
-                {
-                    priority = value;
-                    OnPropertyChanged("Priority");
-                }
+                priorityId = value;
+                OnPropertyChanged("PriorityId");
             }
         }
 
@@ -178,8 +176,10 @@ namespace TaskManager_Kylosov.Models
                     Done = !Done;
                 }
                 );
-
             }
         }
+
+        [Schema.NotMapped]
+        public ObservableCollection<Priority> Priority { get { return new ObservableCollection<Priority>(new PriorityContext().Priority); } }
     }
 }
