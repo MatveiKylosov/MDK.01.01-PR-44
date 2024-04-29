@@ -15,6 +15,7 @@ namespace TaskManager_Kylosov.ViewModels
 
         public VM_Tasks() => Tasks = new ObservableCollection<Tasks>(tasksContext.Tasks.OrderBy(x => x.Done));
 
+
         public RelayCommand OnAddTask
         {
             get
