@@ -84,7 +84,6 @@ namespace TaskManager_Kylosov.Models
                     }
                 }
                 );
-
             }
         }
     }
