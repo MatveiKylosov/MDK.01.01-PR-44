@@ -4,18 +4,15 @@ using TaskManager_Kylosov.Models;
 
 namespace TaskManager_Kylosov.Context
 {
-    public class TasksContext : DbContext
+    public class PriorityContext : DbContext
     {
-        public DbSet<Tasks> Tasks 
-        { 
-            get; 
-            set; 
-        }
-        public TasksContext()
+        public DbSet<Priority> Priority { get; set; }
+        public PriorityContext()
         {
             Database.EnsureCreated();
-            //Tasks.Load();
+            this.Priority.Load();
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(Config.connection, Config.version);
