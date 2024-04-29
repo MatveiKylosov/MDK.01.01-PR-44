@@ -18,13 +18,5 @@ namespace TaskManager_Kylosov.ViewModels
                 return new RelayCommand(obj => { MainWindow.Instance.Close(); });
             }
         }
-
-        public string FindName
-        {
-            set
-            {
-                MessageBox.Show("xui");
-            }
-        }
     }
 }
